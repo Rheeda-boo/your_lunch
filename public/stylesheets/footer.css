@@ -1,0 +1,26 @@
+
+body{
+    font-family: "Courier new", Courier;
+    
+}
+
+.myfooter {
+    display: flex;
+    flex-direction: row;
+    color: whitesmoke;
+    background-color: #5f5f6e;
+    bottom: 0%;
+    padding: 1% 2%;
+    justify-content: center;
+    margin: 0%;
+
+}
+.myfooter  a{
+    color: whitesmoke;
+    text-decoration: none;
+ }
+
+ .myfooter  a:hover{
+    color: whitesmoke;
+    text-decoration: none;
+ }

@@ -1,0 +1,45 @@
+<%- include("../partials/top") %>
+<%- include("../partials/header") %>
+<%- include("../partials/vernav") %>
+
+<div class="moveuser">
+    <h2 style="text-align:center">Add User</h2>
+    <div class="addUser">
+
+        
+        <form action="/admin/adduser" method="POST" class="adduserForm">
+            <label for="firstName">Full Name</label> 
+            <input type="text" class="name" id="name" name="name" required placeholder="Full Name *"> <br/>
+            
+
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email" placeholder="Email *" required> <br>
+    
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="Password *" required> <br>
+
+            <label for="password">Password</label>
+            <input type="password" name="password2" id="password2" placeholder="Confirm Password *" required> <br>
+
+            <label>Role:</label> <br>
+            <input type="radio" id="admin" name="role" value="admin">
+            <label for="admin">Admin</label>
+
+            <input type="radio" id="staff" name="role" value="staff">
+            <label for="staff">Staff</label><br>
+
+            <input type="radio" id="trainee" name="role" value="trainee">
+            <label for="manager">Trainee</label>
+
+            <input type="radio" id="voda" name="role" value="manager">
+            <label for="manager">Restaurant Manager</label><br>
+
+            <button class="adduserbtn">Add User</button>
+
+        </form>
+
+    </div>
+</div>
+
+
+<%- include("../partials/bottom") %>

@@ -1,0 +1,24 @@
+<%- include("../partials/top") %>
+<%- include("../partials/header") %>
+<%- include("../partials/vernav") %>
+
+<h1 style="text-align: center; margin:20px">Update Food Details</h1>
+<div class="addfood">
+    
+
+    <form action="/manager/" method="POST" class="addfoodForm">
+        <label for="foodName">Food name:</label> 
+        <input type="text" class="foodName" id="foodName" name= "foodName" required  value ="<%= menu.foodName %>"> <br/>
+
+        <label for="price">Price:</label> 
+        <input type="text" class="price" id="price" name= "price"  required value="<%= menu.price %> "> <br/>
+
+        <label for="foodimg">Image Url:</label> 
+        <input type="text" id="foodimg" name="foodimg" accept="image/*"> <br>
+
+        <label for="description">Description:</label> 
+        <input type="text" class="description" id="description" name= "description" required placeholder="" hei> <br/>
+
+        <button class="addfoodbtn"> Add food</button>
+    </form>
+</div>

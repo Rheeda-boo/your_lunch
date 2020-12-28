@@ -1,0 +1,22 @@
+
+
+<%  if (user !== undefined && user.role === "admin") { %>
+
+<div>
+    <ul class="vbar">
+        <li class="vlist"><a href="../admin/adduser">Add User</a></li>
+        <li class="vlist"><a href="../admin/allusers">View All users</a></li>
+        <li class="vlist"><a href="../admin/allorders">View All Orders</a></li>
+      </ul>
+</div>
+<% } else { %>
+  <div>
+
+    <ul class="vbar">
+        <li class="vlist"><a href="../manager/addfood">Add to Menu</a></li>
+        <li class="vlist"><a href="../manager/updatefood:menuId">Update Food </a></li>
+        <li class="vlist"><a href="../admin/allorders">View All Orders</a></li>
+      </ul>
+</div>
+
+<% } %>

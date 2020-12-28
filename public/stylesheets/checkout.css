@@ -1,0 +1,32 @@
+body {
+    font-size: 16px;
+}
+
+.chechoutHeader {
+    text-align: center;
+}
+
+.checkoutDiv {
+    margin-left: 45px;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    justify-content: space-between;
+    justify-content: space-around;
+    justify-content: center;
+    
+
+}
+
+label {
+    width: 150px;
+}
+
+.billingForm {
+    margin-bottom: 40px;
+    padding: 10px;
+
+}
+.billingForm input {
+    width: 400px;
+}

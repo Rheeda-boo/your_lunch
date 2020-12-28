@@ -1,0 +1,54 @@
+<%- include("../partials/top") %>
+<%- include("../partials/header") %>
+
+<h1 class="chechoutHeader">Checkout Form</h1>
+<div class="checkoutDiv">
+   
+
+  <div class="billing">
+
+    <div class="address">
+        <form action="" class="billingForm">
+            <h3>Billing Address</h3>
+            <label for="firstName">First Name *</label> <br/>
+            <input type="text" class="firstName" required> <br/>
+        
+            <label for="lastName">Last Name *</label> <br/>
+            <input type="text" class="lastName" required> <br/>
+        
+            <label for="email">Email *</label> <br/>
+            <input type="email" class="email" required> <br/>
+        
+            <label for="phone">Phone *</label> <br/>
+            <input type="text" class="phone" required> <br/>
+
+            <label for="phone2">Phone 2</label> <br/>
+            <input type="text" class="phone2" > <br/>
+        </form>
+    </div>
+
+    <div class="payment">
+
+        <h3>Payment Options</h3>
+
+        <form action="" class="payForm">
+            <input type="radio" id="male" name="pay" value="mtn">
+            <label for="mtn">MTN Mobile Money</label><br>
+            <input type="radio" id="tigo" name="pay" value="tigo">
+            <label for="tigo">AirtelTigo Money</label><br>
+            <input type="radio" id="voda" name="pay" value="tigo">
+            <label for="tigo">VodaFone Cash</label><br><br>
+            <input type="submit" value="Submit">
+        </form> 
+
+    </div>
+  </div>
+
+    <div class="orderSum">
+        <h3>Order Summary</h3>
+    </div>
+
+</div>
+
+<%- include("../partials/footer") %>
+<%- include("../partials/bottom") %>

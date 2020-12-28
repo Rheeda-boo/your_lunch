@@ -1,0 +1,90 @@
+body {
+    background-color: #F7F4F2;
+}
+
+.loginDiv {
+    justify-content: center;
+    justify-self: center;
+    justify-items: center;
+    align-content: center;
+    align-self: center;
+    align-items: center;
+}
+
+.usersDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* padding: 15px; */
+    margin-top: 80px;
+}
+
+img {
+    border-radius: 20%;
+    height: 250;
+    width: 250;
+    /* padding: 20px; */
+}
+
+
+
+#name, #email, #password, #password2{
+    padding: 5px;
+    margin: 5px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 275px;
+    height: 35px;
+ } 
+ 
+ /*
+
+.loginForm  {
+ /* border: 1px solid black; */
+ /* margin: 50px; */
+ /* height: wrap;
+ width: fit-content;
+ padding: 3px;
+ justify-content: center;
+ margin-left: 40%;
+ margin-right: 30%;
+} */ 
+
+a {
+    text-decoration: none;
+}
+a:hover{
+   font-weight: bolder;
+}
+
+.usersHeader {
+    text-align: center;
+    font-style: italic;
+}
+
+button {
+    float: right;
+    border: none;
+    background-color: #E5B7D2;
+    /* color:#; */
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 25px;
+    margin-right: 15px;
+  }  
+
+  button:hover {
+    /* background-color: #3e8e41; */
+    color: #E5B7D2;
+    background-color: #848282;
+    font-size: 17px;
+    /* border-radius: 50%; */
+
+  }
+
+  button:active {
+    transform: translateY(4px);
+  }

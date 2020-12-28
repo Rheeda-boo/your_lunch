@@ -1,0 +1,19 @@
+.orderSum {
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
+    border: 1px sold black;
+    margin: 20px;
+
+}
+
+.breakdownHeader, .orderSumHeader {
+    text-align: center;
+    font-weight: bolder;
+}
+
+.breakdown {
+    display: grid;
+    grid-template-columns: 300px 300px;
+    border: 1px sold black;
+    margin: 20px;
+}

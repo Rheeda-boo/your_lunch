@@ -1,0 +1,34 @@
+<header >
+    <nav class="navBar" >
+        <div class="logoDiv">
+            <a href="/"><img src="/lunchlogo.png" alt="Your Lunch" class="logo"></a>
+        </div>
+
+        <div class="menuDiv">
+            <ul class="menu">
+                <li class="menuList" ><a href="/" ><i class="fas fa-home"></i> Home</a></li>
+                <li class="menuList"><a href="../food/menupage"><i class="fas fa-bars"></i> Menu</a></li>
+                
+                <% if(user === undefined || user === null) { %>
+                    <li class="menuList"><a href="../users/login"> <i class="fas fa-sign-in-alt"></i> Login</a></li>
+
+                    <%  } else if (user !== undefined && user.role === "admin") { %>
+
+                        <li class="menuList"><a href="../admin/adduser">Admin Portal</a></li>
+                        <li class="menuList"><a href="../users/logout"> <i class="fas fa-sign-out-alt"></i> LogOut</a></li>
+
+                        <%  } else if (user !== undefined && user.role === "manager") { %>
+                            <li class="menuList"><a href="../manager/addfood">Manager Portal</a></li>
+                            <li class="menuList"><a href="../users/logout"> <i class="fas fa-sign-out-alt"></i> LogOut</a></li>
+
+                    <% } else{ %>
+                        <li class="menuList"><a href="../food/cart"> <i class="fas fa-cart-arrow-down"></i>Cart</a></li>
+                        <li class="menuList"><a href="../users/logout"> <i class="fas fa-sign-out-alt"></i> LogOut</a></li>
+
+                  <% } %>
+            
+            </ul>
+        </div>
+        
+    </nav>
+</header>

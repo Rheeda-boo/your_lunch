@@ -1,0 +1,114 @@
+<%- include("./partials/top") %>
+<%- include("./partials/header") %>
+
+<div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel" data-interval= "3000">
+    
+    <ol class="carousel-indicators">
+        <li data-target = "#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target = "#myCarousel" data-slide-to="1"></li>
+        <li data-target = "#myCarousel" data-slide-to="2"></li>
+
+    </ol>
+
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="over-lay-image" style="background-image:url(https://images.pexels.com/photos/3662136/pexels-photo-3662136.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500) ;"></div>
+            <div class="container-car">
+              <div class="container">
+                <div class="carousel-caption text-left">
+                  <% if(user === undefined || user === null) { %>
+                    <h1 class="carouHeader">Welcome ......... </h1>
+                    <% } else{ %>
+                      <h1 class="carouHeader">Welcome <%- user.name %> </h1>
+                  <% } %>
+
+
+                  <p class="carouPara"> <i>Whatever your lunch preference, We gotch you </i> <span style='font-size:50px;'>&#128521;</span> </p>
+                </div>
+              </div>
+            </div>
+
+        </div>
+
+        <div class="carousel-item"  >
+            <div class="over-lay-image" style="background-image:url(https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500) ;"></div>
+            <div class="container-car">
+              
+            </div>
+
+        </div>
+
+        <div class="carousel-item " >
+            <div class="over-lay-image" style="background:url(https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500) ;"></div>
+            <div class="container-car">
+            
+            </div>
+
+        </div>
+
+    </div>        
+</div> 
+
+<h2 style="text-align: center;">Today's Menu</h2>
+<div class="gridContainer">
+  <% if (menu.length > 0) { %>
+    
+    <% for (var products = 0; products <3; products++) { %>
+    <div class="please">
+      <figure class="foodimg">
+        <img src="<%= menu[products].foodimg %>" alt="">
+                <figcaption>
+                <p class="captionPara"><%= menu[products].foodName %></p>  
+          <button class="foodbtn" action="/cart" method="POST">&#x20B5 <%= menu[products].price %>.00</button>
+        </figcaption>
+      </figure>
+    
+    </div>
+    <% }    %>
+    <% } else {   %>
+        <p>Nothing in menu</p>
+        <% }    %>
+  </div>  
+
+  <br>
+  <h2 style="text-align: center;">Chef's Specials</h2>
+
+  <div class="gridContainer">
+    <div class="please">
+      <figure class="foodimg">
+        <img src="https://buzzghana.com/wp-content/uploads/2013/10/Banku.jpg" alt="">
+        <figcaption>
+          <p class="captionPara">Banku & Tilapia</p> 
+          <!-- <button class="foodbtn">&#x20B5 25.00</button> -->
+        </figcaption>
+      </figure>
+    
+    </div>
+  
+    <div class="please">
+      <figure class="foodimg">
+        <img src="https://i.pinimg.com/236x/51/c1/ad/51c1ad9431db16190e5049be737b032e--ghana-food-foodies.jpg" alt="">
+        <figcaption>
+          <p class="captionPara">Fufu and Akok) Nkatse nkwan</p> 
+          <!-- <button class="foodbtn">&#x20B5 25.00</button> -->
+        </figcaption>
+      </figure>
+    
+    </div>
+  
+    <div class="please">
+      <figure class="foodimg">
+        <img src="https://i.pinimg.com/originals/bb/b0/38/bbb0386f8bfb388a4223209ab8569dd5.jpg" alt="">
+        <figcaption>
+          <p class="captionPara">Waakye</p> 
+          <!-- <button class="foodbtn">&#x20B5 25.00</button> -->
+        </figcaption>
+      </figure>
+    
+    </div>
+  </div>
+</div>
+
+
+<%- include("./partials/footer") %>
+<%- include("./partials/bottom") %>

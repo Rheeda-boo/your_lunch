@@ -1,0 +1,31 @@
+<%- include("../partials/top") %>
+<%- include("../partials/header") %>
+
+<h2 style="text-align: center; margin:20px"> Our Menu</h2>
+<div class="day">
+<% if (menu.length > 0) { %>
+    
+        <% for (let products of menu) { %>
+    <div class="please" >
+            <figure class="foodimg">
+                <img src="<%= products.foodimg %>" alt="">
+                <figcaption>
+                <p class="captionPara"><%= products.foodName %> <br>
+                    &#x20B5 <%= products.price %>.00</p> 
+                <%   if (user !== undefined && user.role === "manager") { %>
+
+                    <button class="edfoodbtn" > <a href="/manager/updatefood/<%= menu._id %>?edit=true" style="color: whitesmoke;"> Edit</a></button>
+                    <button class="rmfoodbtn">Remove</button>
+                    <% } %>  
+                </figcaption>
+            </figure>
+        </div>
+    
+    <% }    %>
+    <% } else {   %>
+        <p>Nothing in menu</p>
+        <% }    %>
+</div>      
+
+<%- include("../partials/footer") %>
+<%- include("../partials/bottom") %>

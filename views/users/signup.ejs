@@ -1,0 +1,61 @@
+<!-- <%- include("../partials/top") %> -->
+<!-- <%- include("../partials/header") %> -->
+
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Your Lunch</title>
+            <link rel="icon" href="./lunchlogo.PNG">
+
+            
+            <link rel="stylesheet" href="/stylesheets/users.css">
+
+
+            <script src = "https://kit.fontawesome.com/c939d0e917.js"></script>    
+
+        </head>
+        <body>
+
+<div class="usersDiv">
+
+    <div class="imgDiv">
+        <img src="/lunchlogo.PNG" alt="">
+    </div>
+
+<div>
+
+    <form action="/users/signup" method="POST" class="signUpForm">
+        <h2 class="usersHeader">Sign Up Form</h2>
+        <%- include ('../partials/messages') %>
+
+
+        <label for="name"></label> <br/>
+        <input type="name" name="name" class="name" id="name" value="<%= typeof name != 'undefined' ? name : '' %>" required placeholder="Full Name *"> <br/>
+        
+        <!-- <label for="lastName"></label> <br/>
+        <input type="text" name="lastName" class="lastName" id="lastName" required placeholder="Last Name *"> <br/> -->
+
+        <label for="email"></label>
+        <input type="text" name="email" id="email" placeholder="Email *" required value="<%= typeof email != 'undefined' ? email : '' %>"> <br>
+   
+        <label for="password"></label>
+        <input type="password" name="password" id="password" placeholder="Password *" required value="<%= typeof password != 'undefined' ? password : '' %>"> <br>
+
+        <label for="password"></label>
+        <input type="password" name="password2" id="password2" placeholder="Confirm Password *" required value="<%= typeof password2 != 'undefined' ? password2 : '' %>"> <br>
+
+        <label>Sign Up as:</label> <br>
+
+        <input type="radio" id="staff" name="role" value="staff">
+        <label for="staff">Staff</label>
+        <input type="radio" id="trainee" name="role" value="trainee">
+        <label for="manager">Trainee</label><br><br>
+        <p>Already have an accout? <a href="./login"> <i><b>Log in</b> </i></a> </p>
+        <button class="signupbtn" type="submit" >Sign Up</button>
+    </form>
+</div>
+
+<!-- <%- include("../partials/footer") %> -->
+<%- include("../partials/bottom") %>

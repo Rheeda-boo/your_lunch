@@ -1,0 +1,33 @@
+.vbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 15%;
+    background-color: #5f5f6e;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    
+  }
+
+ .vlist  {
+    margin: 15px 8px;
+    padding-top: 15px;
+    
+ }
+
+.vlist a {
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+  
+.vlist a.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+.vlist a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+  }

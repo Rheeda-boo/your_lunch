@@ -1,0 +1,26 @@
+.addUser {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: fit-content;
+    height: fit-content;
+}
+
+.adduserForm label{
+    width: 120px;
+    font-size: 18px;
+
+}
+
+.adduserForm input{
+    /* width: 275px; */
+    /* float: center; */
+}
+
+.addfoodbtn {
+    float: center;
+}
+
+.description {
+    height: 100px;
+}

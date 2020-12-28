@@ -1,0 +1,21 @@
+
+.menufood img {
+    width: 250px;
+    height: 175px;
+}
+
+.foodimg {
+    width: fit-content;
+    height: fit-content;
+}
+
+.day {
+    display: grid;
+    grid-template-columns: auto auto auto ;
+    justify-content: center;
+    padding: 5px;
+}
+
+.menuHeader {
+    text-align: center;
+}

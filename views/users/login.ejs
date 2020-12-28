@@ -1,0 +1,52 @@
+
+
+
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Your Lunch</title>
+            <link rel="icon" href="./lunchlogo.PNG">
+
+            
+            <link rel="stylesheet" href="/stylesheets/users.css">
+         
+
+            <script src = "https://kit.fontawesome.com/c939d0e917.js"></script>    
+
+        </head>
+        <body>
+
+            <div class="usersDiv">
+                <div>
+                    <div class="imgDiv">
+                        <img src="/lunchlogo.PNG" alt="">
+                    </div>
+                </div>
+                 
+                <div class="loginDiv">
+                    <form action="/users/login" method="POST" class="loginForm">
+                        <h2 class="usersHeader">Login Form</h2>
+
+                        <%- include ('../partials/messages') %>
+
+                        <label for="email"></label>
+                        <input type="text" name="email" id="email" placeholder="Email *" required> <br>
+                   
+                        <label for="password"></label>
+                        <input type="password" name="password" id="password" placeholder="Password *" required> <br>
+                
+                        <p>
+                            Don't have an account? <a href="./signup"> <i><b>Sign up</b> </i></a> <br>
+                            Go straight to  <a href="../"> <i><b>Home</b> </i></a>
+                        </p>
+                
+                        <button class="loginbtn" type="submit">LogIn</button>
+                    </form>
+                </div>
+
+            </div>
+
+<!-- <%- include("../partials/footer") %> -->
+<%- include("../partials/bottom") %>

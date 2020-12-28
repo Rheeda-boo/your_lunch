@@ -1,0 +1,29 @@
+<%- include("../partials/top") %>
+<%- include("../partials/header") %>
+<%- include("../partials/vernav") %>
+
+<h1 style="text-align: center; margin:20px">Add Food</h1>
+<div class="addfood">
+    
+    <form action="/manager/addfood" method="POST" class="addfoodForm">
+        <label for="foodName">Food name:</label> 
+        <input type="text" class="foodName" id="foodName" name= "foodName" required > <br/>
+
+        <label for="price">Price:</label> 
+        <input type="text" class="price" id="price" name= "price"  required > <br/>
+
+        <!-- <label for="price">Price:</label> 
+        <input type="text" class="price" id="price" required placeholder="Price *"> <br/> -->
+
+        <!-- <label for="foodimg">Image:</label> 
+        <input type="file" id="foodimg" name="foodimg" accept="image/*"> <br> -->
+
+        <label for="foodimg">Image Url:</label> 
+        <input type="text" id="foodimg" name="foodimg" accept="image/*"> <br>
+
+        <label for="description">Description:</label> 
+        <input type="text" class="description" id="description" name= "description" required placeholder="" hei> <br/>
+
+        <button class="addfoodbtn" type="submit"> Add food</button>
+    </form>
+</div>
