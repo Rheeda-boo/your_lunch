@@ -55,7 +55,7 @@ app.use("/users", usersRouter);
 app.use("/admin", adminRouter);
 app.use("/manager", managerRouter);
 
-const PORT = process.env.PORT || 4400;
+const PORT = process.env.PORT || 5600;
 
 app.listen(PORT, ()=> {
    console.log(`Listening to port ${PORT}`)   
