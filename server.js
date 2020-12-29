@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const app =  express();
 const expressLayouts = require("express-ejs-layouts");
@@ -6,7 +7,7 @@ const database = require("./config/database");
 const session = require('express-session');
 const flash = require('connect-flash')
 
-require("dotenv").config();
+
 
 const indexRouter = require("./routes/index");
 const foodRouter = require("./routes/food");
