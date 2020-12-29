@@ -1,4 +1,5 @@
 require("dotenv").config();
+const path = require("path")
 const express = require("express");
 const app =  express();
 const expressLayouts = require("express-ejs-layouts");
@@ -6,7 +7,6 @@ const database = require("./config/database");
 
 const session = require('express-session');
 const flash = require('connect-flash')
-
 
 
 const indexRouter = require("./routes/index");
@@ -49,7 +49,7 @@ app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
 // app.set("layout", "layouts/layout");
 // app.use(expressLayouts);
-app.use(express.static("public"));
+app.use(express.static(path.join (__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/food", foodRouter);
