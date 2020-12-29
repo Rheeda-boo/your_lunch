@@ -6,6 +6,7 @@ const database = require("./config/database");
 const session = require('express-session');
 const flash = require('connect-flash')
 
+require("dotenv").config();
 
 const indexRouter = require("./routes/index");
 const foodRouter = require("./routes/food");
@@ -56,8 +57,9 @@ app.use("/admin", adminRouter);
 app.use("/manager", managerRouter);
 
 const PORT = process.env.PORT || 4400;
+const HOST = process.env.HOST
 
-app.listen(PORT, ()=> {
+app.listen(PORT, HOST, ()=> {
    console.log(`Listening to port ${PORT}`)   
 });
 
