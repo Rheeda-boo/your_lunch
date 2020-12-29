@@ -7,7 +7,7 @@ const Order = require('../models/order');
 router.get("/menupage", (req,res) => {
     Menu.find()
     .then(menu => {
-        console.log(menu);
+        // console.log(menu);
         res.locals.menu = menu;
         res.render("food/menupage", {
             menu: menu,
@@ -19,7 +19,7 @@ router.get("/menupage", (req,res) => {
 router.get("/addfood", (req,res) => {
     Menu.find()
     .then(menu => {
-        console.log(menu);
+        // console.log(menu);
         res.render("manager/addfood", {
             menu: menu,
         })
@@ -29,7 +29,7 @@ router.get("/addfood", (req,res) => {
 });
 
 router.post("/addfood", (req,res) => {
-    console.log(req.body);
+    // console.log(req.body);
     const foodName = req.body.foodName;
     const image = req.body.foodimg;
     const price = req.body.price;

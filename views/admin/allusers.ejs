@@ -9,15 +9,42 @@
         
         <div> <h3>Admin </h3></div>
         <div> <h3>Staff </h3></div>
+        <div> <h3> Trainee </h3></div>
         <div> <h3> Managers </h3></div>
         <div> <h3>Total </h3></div>
 
-        <div> <h3> 25 </h3></div>
-        <div> <h3> 25 </h3></div>
-        <div> <h3> 25 </h3></div>
-        <div> <h3> <%= products.length  %> </h3></div>
-
+        <div> <h3> <%= adminCounter %> </h3></div>
+        <div> <h3> <%= staffCounter %>  </h3></div>
+        <div> <h3> <%= traineeCounter %>  </h3></div>
+        <div> <h3> <%= managerCounter %>   </h3></div>
+        <div> <h3> <%= user.length %> </h3></div>
     </div>
+
+</div>
+
+<div class="tDiv">
+    <% if (user.length > 0) { %>
+    
+            <table>
+                <tr>
+
+                    <th>Name</th>
+                    <th>Role</th>
+                    <th>Email</th>
+                </tr>
+                <% for (var people = 0; people < user.length; people++) { %>
+
+                <tr>
+
+                    <td><%= user[people].name %></td>
+                    <td><%= user[people].role %> </td>
+                    <td><%= user[people].email %></td>
+                </tr>
+                <% } %> 
+               
+            </table>
+        
+    <% } %> 
 
 </div>
 

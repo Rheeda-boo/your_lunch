@@ -6,7 +6,8 @@
 
 .allusers {
     display: grid;
-    grid-template-columns: 250px 250px 250px 250px ;
+    justify-content: center;
+    grid-template-columns: 200px 200px 200px 200px  200px;
     border: 1px sold black;
     margin: 20px;
     
@@ -22,4 +23,20 @@
     background-color: #5f5f6e;
     margin-top: 5px;
     color: whitesmoke;
+}
+
+.tDiv {
+    display: flex;
+    justify-content: center;
+    margin: 2px 0px 20px;
+}
+
+tr, td {
+    padding: 10px 30px;
+    text-align: center;
+    margin: 10px;
+    font-size: 20px;
+}
+table, th, td {
+    border: 1px solid black;
 }

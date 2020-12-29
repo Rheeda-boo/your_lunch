@@ -10,13 +10,7 @@ const importData = () => {
     role: "admin",
   });
 
-  newUser = new User({
-    name: "Resturant manager",
-    email: "manager@gmail.com",
-    password: "man123",
-    role: "manager",
-  });
-
+  
   //hash password
   bcrypt.genSalt(10, (err, salt) =>
     bcrypt.hash(newUser.password, salt, (err, hash) => {

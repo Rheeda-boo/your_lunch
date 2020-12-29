@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 const connection = mongoose.connection;
 
-mongoose.connect("mongodb://localhost:27017/YourLunch",
+mongoose.connect( "mongodb+srv://boobooboo:boobooboo@your-lunch-cluster.yzzin.mongodb.net/YourLunch?retryWrites=true&w=majority",
+    // "mongodb://localhost:27017/YourLunch",
  {useNewUrlParser: true}, 
  { useUnifiedTopology: true } );
 

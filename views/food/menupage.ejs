@@ -13,9 +13,11 @@
                 <p class="captionPara"><%= products.foodName %> <br>
                     &#x20B5 <%= products.price %>.00</p> 
                 <%   if (user !== undefined && user.role === "manager") { %>
+                    <div class="butt">
+                        <button class="edfoodbtn" > <a href="/manager/updatefood/<%= menu._id %>?edit=true" style="color: whitesmoke;"> Edit</a></button>
+                        <button class="rmfoodbtn">Remove</button>
+                    </div>
 
-                    <button class="edfoodbtn" > <a href="/manager/updatefood/<%= menu._id %>?edit=true" style="color: whitesmoke;"> Edit</a></button>
-                    <button class="rmfoodbtn">Remove</button>
                     <% } %>  
                 </figcaption>
             </figure>
