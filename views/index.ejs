@@ -55,9 +55,9 @@
     
     <% for (var products = 0; products < menu.length; products++) { %>
          <%  var d = new Date(); %> 
-          <% var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]; %> 
+          <% var days = [,"Monday","Tuesday","Wednesday","Thursday","Friday"]; %> 
                   <% var day = days[d.getDay()]; %> 
-      <% if (menu[products].day === day) { %>
+      <% if (menu[products].day === day ) { %>
           <div class="please">
             <figure class="foodimg">
               <img src="<%= menu[products].foodimg %>" alt="">
