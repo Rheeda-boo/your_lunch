@@ -114,6 +114,7 @@ router.post("/signup", (req, res) => {
       email: email,
       password: password,
       password2: password2,
+      role: role
     });
   } else {
     //validation passed
@@ -127,6 +128,7 @@ router.post("/signup", (req, res) => {
           email,
           password,
           password2,
+          role
         });
       } else {
         const newUser = new User({

@@ -103,13 +103,9 @@ router.get("/allusers", (req, res) => {
           staffCounter++;
         } else {
           traineeCounter++;
-        }
+        } 
       }
-      // console.log(adminCounter);
-      // console.log(traineeCounter);
-      // console.log(managerCounter);
-      // console.log(staffCounter);
-      
+           
 
       res.locals.user = user;
       res.render("admin/allusers", {

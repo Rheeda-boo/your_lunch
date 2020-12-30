@@ -53,21 +53,26 @@
 <div class="gridContainer">
   <% if (menu.length > 0) { %>
     
-    <% for (var products = 0; products <3; products++) { %>
-    <div class="please">
-      <figure class="foodimg">
-        <img src="<%= menu[products].foodimg %>" alt="">
-                <figcaption>
-                <p class="captionPara"><%= menu[products].foodName %></p>  
-          <button class="foodbtn" action="/cart" method="POST">&#x20B5 <%= menu[products].price %>.00</button>
-        </figcaption>
-      </figure>
-    
-    </div>
+    <% for (var products = 0; products < menu.length; products++) { %>
+         <%  var d = new Date(); %> 
+          <% var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]; %> 
+                  <% var day = days[d.getDay()]; %> 
+      <% if (menu[products].day === day) { %>
+          <div class="please">
+            <figure class="foodimg">
+              <img src="<%= menu[products].foodimg %>" alt="">
+                      <figcaption>
+                      <p class="captionPara"><%= menu[products].foodName %></p>  
+                <button class="foodbtn" action="/cart" method="POST">&#x20B5 <%= menu[products].price %>.00</button>
+              </figcaption>
+            </figure>
+          
+          </div>
+      <% }    %>
     <% }    %>
     <% } else {   %>
         <p>Nothing in menu</p>
-        <% }    %>
+ <% }    %>
   </div>  
 
   <br>

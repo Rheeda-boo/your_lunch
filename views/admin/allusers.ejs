@@ -1,6 +1,8 @@
 <%- include("../partials/top") %>
-<%- include("../partials/header") %>
 <%- include("../partials/vernav") %>
+<%- include("../partials/header") %>
+
+
  <h2 class="orderSumHeader" style="text-align: center; margin:20px">All Users</h2>
 <div class="allusersDiv">
    
@@ -11,13 +13,13 @@
         <div> <h3>Staff </h3></div>
         <div> <h3> Trainee </h3></div>
         <div> <h3> Managers </h3></div>
-        <div> <h3>Total </h3></div>
+        <div> <h3 style="font-weight: bolder;">Total </h3></div>
 
         <div> <h3> <%= adminCounter %> </h3></div>
         <div> <h3> <%= staffCounter %>  </h3></div>
         <div> <h3> <%= traineeCounter %>  </h3></div>
         <div> <h3> <%= managerCounter %>   </h3></div>
-        <div> <h3> <%= user.length %> </h3></div>
+        <div> <h3 > <%= user.length %> </h3></div>
     </div>
 
 </div>
@@ -31,6 +33,8 @@
                     <th>Name</th>
                     <th>Role</th>
                     <th>Email</th>
+                    <th></th>
+                    <th></th>
                 </tr>
                 <% for (var people = 0; people < user.length; people++) { %>
 
@@ -39,6 +43,8 @@
                     <td><%= user[people].name %></td>
                     <td><%= user[people].role %> </td>
                     <td><%= user[people].email %></td>
+                    <td><button>Approve</button></td>
+                    <td><button>Remove</button></td>
                 </tr>
                 <% } %> 
                

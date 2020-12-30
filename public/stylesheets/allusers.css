@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     text-align: center;
+    margin-left: 15%;;
 }
 
 .allusers {
@@ -37,6 +38,10 @@ tr, td {
     margin: 10px;
     font-size: 20px;
 }
-table, th, td {
+table, td{
     border: 1px solid black;
+}
+
+table {
+    margin-left: 15%;;
 }

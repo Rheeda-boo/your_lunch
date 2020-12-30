@@ -19,9 +19,11 @@ router.get("/menupage", (req,res) => {
 router.get("/addfood", (req,res) => {
     Menu.find()
     .then(menu => {
+        
         // console.log(menu);
         res.render("manager/addfood", {
             menu: menu,
+        
         })
     })
     .catch(err => console.log(err));
@@ -33,14 +35,18 @@ router.post("/addfood", (req,res) => {
     const foodName = req.body.foodName;
     const image = req.body.foodimg;
     const price = req.body.price;
+    const day = req.body.day
     const description = req.body.description;
     const menu = new Menu({
         foodName: foodName,
         foodimg: image,
+        day : day,
         price: price,
         description: description
 
     });
+
+       
     menu.save()
     .then(result => {
         console.log('created menu');
