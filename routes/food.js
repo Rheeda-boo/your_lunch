@@ -57,8 +57,58 @@ router.get("/checkout", (req,res) => {
 });
 
 router.post("/checkout", (req,res) => {
-    res.render("food/checkout")
+    res.locals.user = user;
+      res.render("food/checkout", {
+        user: user,
+        
+      });
 });
+
+router.post("/createorder", (req,res) => {
+    req.user
+    .populate('cart.items.productId')
+    .execPopulate()
+    .then(user => {
+      // const d = new Date();
+      // const payment = order.payment;
+      const menu = user.cart.items.map(i => {
+        return { menu: i.menu, menu: { ...i.menuId._doc } };
+      });
+      const order = new Order({
+        user: {
+          email: req.user.email,
+          username: req.user.username,
+          userId: req.user
+          
+        },
+        menu: menu,
+        date: new Date(),
+        pay: pay,
+      });
+      return order.save();
+    })
+    .then(result => {
+      return req.user.clearCart();
+    })
+    .then(() => {
+      res.render("shop/checkout");
+    })
+    .catch(err => console.log(err)); 
+});
+
+router.get("/createorder", (req,res) => {
+    Order.find({  })
+    .then(orders => {
+      res.render('shop/orders', {
+        orders: orders
+      }),
+      res.render('shop/checkout', {
+        orders: orders
+      })
+    })
+    .catch(err => console.log(err));
+});
+
 
 router.post("/deletecart", (req,res) => {
     const prodId = req.body.menuId;

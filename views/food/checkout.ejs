@@ -29,17 +29,19 @@
 
         <h3 style="font-weight: bolder;">Payment Options</h3>
 
-        <form action="" class="payForm">
+          <form action="" class="payForm">
 
-            <input type="radio" id="male" name="pay" value="cash">
-            <label for="mtn">Cash on Delivery</label><br>
-            <input type="radio" id="tigo" name="pay" value="momo">
-            <label for="tigo">Mobile Money</label><br>
-            <input type="radio" id="voda" name="pay" value="tigo">
-            <label for="tigo">Coupon</label>
-            <input type="text" placeholder="Enter Coupon code ">
-            <br><br>
-            <button type="submit" value="" class="orderbtn"> Complete Order</button>
+              <input type="radio" id="male" name="pay" value="cash">
+              <label for="mtn">Cash on Delivery</label><br>
+              <input type="radio" id="tigo" name="pay" value="momo">
+              <label for="tigo">Mobile Money</label><br>
+              <input type="radio" id="voda" name="pay" value="tigo">
+              <label for="tigo">Coupon</label>
+              <input type="text" placeholder="Enter Coupon code ">
+              <br><br>
+              <form action="/createorder" method="POST">
+                <button type="submit" value="" class="orderbtn"> Complete Order</button>
+              </form>
             
         </form> 
 

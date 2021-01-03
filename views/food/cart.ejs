@@ -14,11 +14,11 @@
                     </div>
 
                     <div class="quanDiv">
-                        
-                       <p><%= p.quantity %></p> 
+                       <input type="text" value="<%= p.quantity %>" > 
+                       <p></p> 
                     </div>
                     <div class="noteDiv">
-                        <input type="text" name="text" placeholder="Add note here">
+                        <input type="text" name="text" placeholder="Description note">
                     </div>
                     <div class="rmDiv">
                         <form action="/food/deletecart" method="POST">
@@ -38,7 +38,7 @@
 
         <div class="col-lg-4 offset-lg-4">
             <div class="checkout">
-                <form action="/food/checkout" method="POST">
+                <form action="/food/checkout" method="GET">
 
                     <button type="submit" class="proceed-btn">Proceed to Checkout</button>
                 </form>
