@@ -1,7 +1,7 @@
 const mongoose  = require("mongoose");
+const Schema = mongoose.Schema;
 
-
-const menuSchema = new  mongoose.Schema({
+const menuSchema = new Schema({
     foodName : {
         type : String,
         required : true,
@@ -19,7 +19,7 @@ const menuSchema = new  mongoose.Schema({
 
     day : {
         type : String,
-        
+        required : true,
     },
 
     description : {
@@ -27,10 +27,11 @@ const menuSchema = new  mongoose.Schema({
         trim : true
     },
 
-    // todaysMenu : {
-    //     type: boolean,
-    //     default: false,
-    // }
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: false
+    }
     
 });
 

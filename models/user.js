@@ -20,14 +20,18 @@ const userSchema = new  mongoose.Schema({
 
     role : {
         type : String,
-        required : true,
-        
+        required : true,   
     },
+
+    isApproved : {
+      type : Boolean,
+      default : false,   
+  },
 
     cart: {
         items: [
           {
-            productId: {
+            menuId: {
               type: Schema.Types.ObjectId,
               ref: 'Menu',
               required: true
@@ -40,19 +44,20 @@ const userSchema = new  mongoose.Schema({
     
 });
 
-userSchema.methods.addToCart = function(product) {
-  const cartProductIndex = this.cart.items.findIndex(cp => {
-    return cp.productId.toString() === product._id.toString();
+userSchema.methods.addToCart = function(menu) {
+  console.log(menu);
+  const cartMenuIndex = this.cart.items.findIndex(cp => {
+    return cp.menuId.toString() === menu._id.toString();
   });
   let newQuantity = 1;
   const updatedCartItems = [...this.cart.items];
  
-  if (cartProductIndex >= 0) {
-    newQuantity = this.cart.items[cartProductIndex].quantity + 1;
-    updatedCartItems[cartProductIndex].quantity = newQuantity;
+  if (cartMenuIndex >= 0) {
+    newQuantity = this.cart.items[cartMenuIndex].quantity + 1;
+    updatedCartItems[cartMenuIndex].quantity = newQuantity;
   } else {
     updatedCartItems.push({
-      productId: product._id,
+      menuId: menu._id,
       quantity: newQuantity
     });
   }
@@ -63,9 +68,9 @@ userSchema.methods.addToCart = function(product) {
   return this.save();
 };
  
-userSchema.methods.removeFromCart = function(productId) {
+userSchema.methods.removeFromCart = function(menuId) {
   const updatedCartItems = this.cart.items.filter(item => {
-    return item.productId.toString() !== productId.toString();
+    return item.menuId.toString() !== menuId.toString();
   });
   this.cart.items = updatedCartItems;
   return this.save();

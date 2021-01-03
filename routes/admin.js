@@ -22,7 +22,7 @@ router.get("/adduser", (req, res) => {
 router.post("/adduser", (req, res) => {
   const { name, email, password, password2, role } = req.body;
   let errors = [];
-  console.log(" Name " + name + " email :" + email + " pass:" + password);
+  // console.log(" Name " + name + " email :" + email + " pass:" + password);
   if (!name || !email || !password || !password2) {
     errors.push({ msg: "Please fill in all fields" });
   }
@@ -45,7 +45,7 @@ router.post("/adduser", (req, res) => {
   } else {
     //validation passed
     User.findOne({ email: email }).exec((err, user) => {
-      console.log(user);
+      // console.log(user);
       if (user) {
         errors.push({ msg: "Email already registered" });
         res.render("admin/adduser", {
@@ -73,7 +73,7 @@ router.post("/adduser", (req, res) => {
             newUser
               .save()
               .then((value) => {
-                console.log(value);
+                // console.log(value);
                 req.flash("success_msg", "You have now registered!");
                 res.redirect("/admin/allusers");
               })
@@ -84,6 +84,17 @@ router.post("/adduser", (req, res) => {
     });
   }
 });
+
+router.get("/deleteuser/:userId", (req, res) => {
+  const uId = req.params.userId;
+  User.findById(uId).deleteOne()
+  .then(user => {
+    res.render("admin/allusers", {
+      user : user
+    })
+  })
+});
+
 
 router.get("/allusers", (req, res) => {
   User.find()
@@ -106,7 +117,6 @@ router.get("/allusers", (req, res) => {
         } 
       }
            
-
       res.locals.user = user;
       res.render("admin/allusers", {
         user: user,
@@ -130,9 +140,6 @@ router.get("/coupons", (req, res) => {
   res.render("admin/coupons");
 });
 
-router.get("/createaccounts", (req, res) => {
-  res.render("admin/createaccounts");
-});
 
 router.get("/checkout", (req, res) => {
   res.render("admin/checkout");

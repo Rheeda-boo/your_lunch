@@ -2,18 +2,13 @@ const mongoose  = require("mongoose");
 const menuModel = require("./menu");
 
 const orderSchema = new  mongoose.Schema({
-    firstname : [
+    name : [
         { type : mongoose.Schema.Types.ObjectId,
          required : true,
          ref: "userModel"
         }],
 
-    lastname : [
-        { type : mongoose.Schema.Types.ObjectId,
-         required : true,
-         ref: "userModel"
-        }],
-
+    
     menu : [
         { type : mongoose.Schema.Types.ObjectId,
          required : true,
@@ -25,6 +20,11 @@ const orderSchema = new  mongoose.Schema({
         type : Number,
         required : true,
     },
+
+    payOption: {
+        type : String,
+        required : true, 
+    }
     
 });
 

@@ -7,48 +7,47 @@
 
   <div class="billing">
 
-    <div class="address">
+    <div class="address" style="font-size: larger;">
         <form action="" class="billingForm">
-            <h3>Billing Address</h3>
-            <label for="firstName">First Name *</label> <br/>
-            <input type="text" class="firstName" required> <br/>
-        
-            <label for="lastName">Last Name *</label> <br/>
-            <input type="text" class="lastName" required> <br/>
-        
-            <label for="email">Email *</label> <br/>
-            <input type="email" class="email" required> <br/>
-        
-            <label for="phone">Phone *</label> <br/>
-            <input type="text" class="phone" required> <br/>
+            <h3 style="font-weight: bolder;">Delivery Infomation</h3>
 
-            <label for="phone2">Phone 2</label> <br/>
-            <input type="text" class="phone2" > <br/>
+            <label for="firstName"> Name: </label> 
+            <%= user.name %> 
+            <br/>
+        
+             <label for="email">Email: </label> 
+            <%= user.email %> 
+             <br/>
+        
+            <label for="phone">Role: </label> 
+            <%= user.role %> <br/>
+
         </form>
     </div>
 
     <div class="payment">
 
-        <h3>Payment Options</h3>
+        <h3 style="font-weight: bolder;">Payment Options</h3>
 
         <form action="" class="payForm">
-            <input type="radio" id="male" name="pay" value="mtn">
-            <label for="mtn">MTN Mobile Money</label><br>
-            <input type="radio" id="tigo" name="pay" value="tigo">
-            <label for="tigo">AirtelTigo Money</label><br>
+
+            <input type="radio" id="male" name="pay" value="cash">
+            <label for="mtn">Cash on Delivery</label><br>
+            <input type="radio" id="tigo" name="pay" value="momo">
+            <label for="tigo">Mobile Money</label><br>
             <input type="radio" id="voda" name="pay" value="tigo">
-            <label for="tigo">VodaFone Cash</label><br><br>
-            <input type="submit" value="Submit">
+            <label for="tigo">Coupon</label>
+            <input type="text" placeholder="Enter Coupon code ">
+            <br><br>
+            <button type="submit" value="" class="orderbtn"> Complete Order</button>
+            
         </form> 
 
     </div>
   </div>
 
-    <div class="orderSum">
-        <h3>Order Summary</h3>
-    </div>
 
 </div>
 
-<%- include("../partials/footer") %>
+
 <%- include("../partials/bottom") %>

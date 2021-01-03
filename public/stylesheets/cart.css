@@ -1,3 +1,19 @@
+.cartItem {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    
+    justify-content: space-around;
+    justify-self: center;
+    
+}
+
+.cartItem img {
+    height: 100px;
+    width: 80px;
+}
+
 .cart .table {
     margin-bottom: 30px;
     border-bottom: 1px solid whitesmoke;

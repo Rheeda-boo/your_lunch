@@ -35,21 +35,21 @@ router.post("/addfood", (req,res) => {
     const foodName = req.body.foodName;
     const image = req.body.foodimg;
     const price = req.body.price;
-    const day = req.body.day
+    const day = req.body.day;
     const description = req.body.description;
     const menu = new Menu({
         foodName: foodName,
         foodimg: image,
         day : day,
         price: price,
-        description: description
-
+        description: description,
+        userId: req.user
     });
 
        
     menu.save()
     .then(result => {
-        console.log('created menu');
+        // console.log('created menu');
         res.redirect("../food/menupage")
     })
     .catch(err => {
@@ -69,7 +69,7 @@ router.get("/menu", (req,res) => {
 router.get("/updatefood", (req,res,menu) => {
     const editMode = req.query.edit;
     const prodId = req.params.menuId;
-    console.log(prodId);
+    // console.log(prodId);
     Menu.findById(prodId)    
     .then(menu => {
         res.render("manager/updatefood", {
@@ -77,7 +77,7 @@ router.get("/updatefood", (req,res,menu) => {
             menu : menu,
         });
 
-        console.log(menu)
+        // console.log(menu)
     });
         
         

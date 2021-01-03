@@ -11,7 +11,7 @@ router.get("/",(req,res) => {
 
 Menu.find()
     .then(menu => {
-        console.log(menu);
+        // console.log(menu);
         res.locals.menu = menu;
         res.render("index", {
             menu: menu,

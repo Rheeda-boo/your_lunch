@@ -21,19 +21,34 @@ router.get("/chef", (req,res) => {
 
 
 router.get("/cart", (req,res) => {
-    // res.render("food/cart")
     req.user
-    .populate('cart.items.productId')
+    .populate('cart.items.menuId')
     .execPopulate()
     .then(user => {
       const menu = user.cart.items;
       res.render('food/cart', {
-        path: '/cart',
-        pageTitle: 'Your Cart',
         menu: menu
       });
     })
     .catch(err => console.log(err));
+});
+
+router.post("/cart", (req,res) => {
+    console.log(req.body);
+    const prodId = req.body.menuId;
+    Menu.findById(prodId)
+    .then(menu => {
+        console.log(prodId);
+        return req.user.addToCart(menu);
+    })
+    .then(result => {
+        console.log(prodId);
+        res.redirect("/");
+    }).catch((err) => {
+        console.log(err);
+        res.redirect("/");
+    });
+
 });
 
 
@@ -41,16 +56,18 @@ router.get("/checkout", (req,res) => {
     res.render("food/checkout")
 });
 
-// router.post("/cart", (req,res) => {
-//     const prodId = req.body.productId;
-//     Menu.findById(prodId)
-//     .then(product => {
-//         return req.user.addToCart(product);
-//     })
-//     .then(result => {
-//         console.log(result);
-//         res.redirect("food/cart");
-//     });
-// }​​​​​​​​);
+router.post("/checkout", (req,res) => {
+    res.render("food/checkout")
+});
+
+router.post("/deletecart", (req,res) => {
+    const prodId = req.body.menuId;
+    req.user
+    .removeFromCart(prodId)
+    .then(result => {
+        res.redirect("/food/cart");
+     })
+     .catch(err => console.log(err))
+});
 
 module.exports = router;

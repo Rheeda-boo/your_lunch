@@ -20,66 +20,7 @@ router.post("/login", (req, res, next) => {
     })(req,res,next);
 
 
-    // passport.authenticate("local", (req, res, next,user) => {
-    //   if (user.role === "admin") {
-    //     res.render("/users/signup")
-    //   }
-    //   else {
-    //     res.render("/")
-    //   }
-    // })
-  
 
-  // if (passport.authenticate("local") = true && user.role === "admin") 
-  //     res.render("/users/signup")
-
-  // else {
-  //   res.render("/")
-  // }    
-  
-
-
-  // passport.authenticate('local', 
-  // {
-  //     successRedirect : '/',
-  //     failureRedirect : '/users/login',
-  //     failureFlash : true,
-  // }, (err, user) =>  {
-  //   if (user){
-  //     if (user.role === 'staff' || user.role === 'trainee'){
-  //       // successRedirect : '/',
-
-  //       res.render("/user/signup");
-  //       console.log("Staff");
-  //     }
-  //     else if(user.role === 'admin'){
-  //       // res.send(403);
-  //       console.log("we are in");
-  //     } 
-  //     else {
-  //       res.sendStatus(403);
-  //     }  
-  //   }  
-  //   else {
-  //       return res.sendStatus(401)
-  //   }
-  // })(req, res, next);
-
-
-
-  // passport.authenticate("local", (err, user) => {
-  //   console.log("err", err);
-  //   console.log("user", user);
-  //   if (err) {
-  //     res.redirect("/users/login");
-  //   } else {
-  //     if (user.role === "admin") {
-  //       res.redirect("/admin/dashbord");
-  //     } else {
-  //       res.redirect("/");
-  //     }
-  //   }
-  // })(req, res, next);
 });
 
 router.get("/logout", (req, res) => {
@@ -95,7 +36,7 @@ router.post("/signup", (req, res) => {
   
   const { name, email, password, password2, role } = req.body;
   let errors = [];
-  console.log(" Name " + name + " email :" + email + " pass:" + password);
+  // console.log(" Name " + name + " email :" + email + " pass:" + password);
   if (!name || !email || !password || !password2) {
     errors.push({ msg: "Please fill in all fields" });
   }
@@ -119,7 +60,7 @@ router.post("/signup", (req, res) => {
   } else {
     //validation passed
     User.findOne({ email: email }).exec((err, user) => {
-      console.log(user);
+      // console.log(user);
       if (user) {
         errors.push({ msg: "Email already registered" });
         res.render("users/signup", {
@@ -128,7 +69,7 @@ router.post("/signup", (req, res) => {
           email,
           password,
           password2,
-          role
+          role,
         });
       } else {
         const newUser = new User({
@@ -148,7 +89,7 @@ router.post("/signup", (req, res) => {
             newUser
               .save()
               .then((value) => {
-                console.log(value);
+                // console.log(value);
                 req.flash("success_msg", "You have now registered!");
                 res.redirect("/users/login");
               })

@@ -55,24 +55,33 @@
     
     <% for (var products = 0; products < menu.length; products++) { %>
          <%  var d = new Date(); %> 
-          <% var days = [,"Monday","Tuesday","Wednesday","Thursday","Friday"]; %> 
+          <% var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday"]; %> 
                   <% var day = days[d.getDay()]; %> 
       <% if (menu[products].day === day ) { %>
-          <div class="please">
-            <figure class="foodimg">
-              <img src="<%= menu[products].foodimg %>" alt="">
-                      <figcaption>
-                      <p class="captionPara"><%= menu[products].foodName %></p>  
-                <button class="foodbtn" action="/cart" method="POST">&#x20B5 <%= menu[products].price %>.00</button>
-              </figcaption>
-            </figure>
+
+    <div class="please">
+      <figure class="foodimg">
+        <img src="<%= menu[products].foodimg %>" alt="">
+                <figcaption>
+                <p class="captionPara"><%= menu[products].foodName %></p>  
+          <p class="foodbtn">&#x20B5 <%= menu[products].price %>.00</p>
           
-          </div>
-      <% }    %>
+          <% if (user !== undefined && (user.role === "trainee" || user.role === "staff")) { %> 
+            <form action="/food/cart" method="post">
+            
+              <button class="btn" type="submit">Add to Cart</button>
+              <input type="hidden" name="menuId" value="<%= menu[products]._id %>">
+          </form>
+          <% } %> 
+        </figcaption>
+      </figure>
+    
+    </div>
+    <% }    %>
     <% }    %>
     <% } else {   %>
         <p>Nothing in menu</p>
- <% }    %>
+        <% }    %>
   </div>  
 
   <br>
