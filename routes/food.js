@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Menu = require('../models/menu');
 const User = require('../models/user');
+const Coupon = require("../models/coupon");
 const Order = require('../models/order');
 
 router.get("/menupage", (req,res) => {
@@ -33,6 +34,9 @@ router.get("/cart", (req,res) => {
     .catch(err => console.log(err));
 });
 
+
+
+
 router.post("/cart", (req,res) => {
     console.log(req.body);
     const prodId = req.body.menuId;
@@ -57,33 +61,32 @@ router.get("/checkout", (req,res) => {
 });
 
 router.post("/checkout", (req,res) => {
-    res.locals.user = user;
+    // res.locals.user = user;
       res.render("food/checkout", {
-        user: user,
+        // user: user,
         
       });
 });
 
 router.post("/createorder", (req,res) => {
     req.user
-    .populate('cart.items.productId')
+    .populate('cart.items.menuId')
     .execPopulate()
     .then(user => {
-      // const d = new Date();
-      // const payment = order.payment;
+      
       const menu = user.cart.items.map(i => {
-        return { menu: i.menu, menu: { ...i.menuId._doc } };
+        return { quantity: i.quantity, menu: { ...i.menuId._doc } };
       });
       const order = new Order({
         user: {
-          email: req.user.email,
-          username: req.user.username,
+    
+          name: req.user.name,
           userId: req.user
           
         },
         menu: menu,
         date: new Date(),
-        pay: pay,
+        // pay: pay,
       });
       return order.save();
     })
@@ -91,18 +94,18 @@ router.post("/createorder", (req,res) => {
       return req.user.clearCart();
     })
     .then(() => {
-      res.render("shop/checkout");
+      res.redirect("/", {
+       
+
+      });
     })
     .catch(err => console.log(err)); 
 });
 
-router.get("/createorder", (req,res) => {
+router.get("/create-order", (req,res) => {
     Order.find({  })
     .then(orders => {
-      res.render('shop/orders', {
-        orders: orders
-      }),
-      res.render('shop/checkout', {
+      res.render('/', {
         orders: orders
       })
     })
@@ -118,6 +121,29 @@ router.post("/deletecart", (req,res) => {
         res.redirect("/food/cart");
      })
      .catch(err => console.log(err))
+});
+
+
+router.get("/checkcoupon", (req,res) => {
+  Coupon.find({  })
+    .then(coupon => {
+      res.render('/', {
+        coupon: coupon
+      })
+    })
+
+  .catch(err => console.log(err));
+});
+
+router.post("/checkcoupon", (req,res) => {
+  Coupon.find({  })
+    .then(coupon => {
+      res.render('/', {
+        coupon: coupon
+      })
+    })
+
+  .catch(err => console.log(err));
 });
 
 module.exports = router;

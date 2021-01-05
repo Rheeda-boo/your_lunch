@@ -31,3 +31,19 @@
     background-color: #555;
     color: white;
   }
+
+  /* .cForm {
+    border: 120px solid black; 
+    display: flex;
+    justify-content: center;
+  } */
+
+  .couponDiv {
+    display: flex;
+    justify-content: center;
+   }
+
+  .mainCoupon {
+    display: flex;
+    flex-direction: column;
+  }

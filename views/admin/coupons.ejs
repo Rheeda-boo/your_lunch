@@ -1,0 +1,46 @@
+<%- include("../partials/top") %>
+<%- include("../partials/vernav") %>
+<%- include("../partials/header") %>
+
+    <div class="mainCoupon">
+        <div class="couponDiv">
+
+            <form action="/admin/coupons" method="POST" class="cForm">
+                <h1 style="text-align: center;">Coupon</h1>
+                <label for="">Coupon Code: </label> 
+                <input type="text" name="code"> 
+                <button type="submit" class="btn">Add Coupon</button>
+            </form>
+        </div>
+        <div class="tDiv">
+                <% if (coupon.length > 0) { %>
+                
+                    <table>
+                        <tr>
+            
+                            <th>Coupon Code</th>
+                            <th>Date</th>
+            
+                        </tr>
+                        <% for (var voucher = 0; voucher < coupon.length; voucher++) { %>
+            
+                            <tr>
+                
+                                <td><%= coupon[voucher].code %></td>
+                                <td><%= coupon[voucher].date %> </td>
+                                <td>
+                                    <form action="/admin/deletecoupon/<%= coupon[voucher]._id %> " method="POST">
+                                        <button id="<%= coupon._id %>" type="submit" class="btn">Remove</button>
+                                    </form>
+                                </td>
+                                    
+                            </tr>
+                        <% } %> 
+                        
+                    </table>
+                    
+                <% } %> 
+            
+            
+        </div>
+    </div>

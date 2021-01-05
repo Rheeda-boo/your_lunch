@@ -10,17 +10,7 @@
     <div class="address" style="font-size: larger;">
         <form action="" class="billingForm">
             <h3 style="font-weight: bolder;">Delivery Infomation</h3>
-
-            <label for="firstName"> Name: </label> 
-            <%= user.name %> 
-            <br/>
-        
-             <label for="email">Email: </label> 
-            <%= user.email %> 
-             <br/>
-        
-            <label for="phone">Role: </label> 
-            <%= user.role %> <br/>
+<!--  -->
 
         </form>
     </div>
@@ -29,7 +19,7 @@
 
         <h3 style="font-weight: bolder;">Payment Options</h3>
 
-          <form action="" class="payForm">
+          <form action="/food/createorder" method="POST" class="payForm">
 
               <input type="radio" id="male" name="pay" value="cash">
               <label for="mtn">Cash on Delivery</label><br>
@@ -37,13 +27,20 @@
               <label for="tigo">Mobile Money</label><br>
               <input type="radio" id="voda" name="pay" value="tigo">
               <label for="tigo">Coupon</label>
-              <input type="text" placeholder="Enter Coupon code ">
+              <input type="text" placeholder="Enter Coupon code " name="code"> 
+              <form action="/food/checkcoupon " method="GET">
+                <button type="submit" class="btn">Check Validity</button>
+            </form>
               <br><br>
-              <form action="/createorder" method="POST">
+              <form action="" method="#">
                 <button type="submit" value="" class="orderbtn"> Complete Order</button>
               </form>
             
         </form> 
+
+
+
+
 
     </div>
   </div>

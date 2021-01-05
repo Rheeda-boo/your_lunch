@@ -45,3 +45,10 @@
 .description {
     height: 100px;
 }
+
+.forFood {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: 15%;
+}

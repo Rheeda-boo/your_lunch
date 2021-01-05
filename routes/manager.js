@@ -23,6 +23,8 @@ router.get("/addfood", (req,res) => {
         // console.log(menu);
         res.render("manager/addfood", {
             menu: menu,
+            // foodName:foodName,
+            // price:price,
         
         })
     })
@@ -50,7 +52,7 @@ router.post("/addfood", (req,res) => {
     menu.save()
     .then(result => {
         // console.log('created menu');
-        res.redirect("../food/menupage")
+        res.redirect("/manager/addfood")
     })
     .catch(err => {
         console.log(err);
@@ -59,8 +61,59 @@ router.post("/addfood", (req,res) => {
 
 
 router.get("/vieworders", (req,res) => {
-    res.render("manager/vieworders")
+    // res.render("manager/vieworders")
+    Order.find()
+    .then((order) => {
+      // console.log(user);
+                
+      res.locals.order = order;
+      res.render("manager/vieworders", {
+        order: order,
+        
+      });
+    })
 } );
+
+router.get("/deleteorder/:orderId", (req, res) => {
+    const oId = req.params.orderId;
+    Order.findById(oId).deleteOne()
+    .then(order => {
+      res.render("manager/vieworders", {
+        order : order
+      })
+    })
+  });
+
+
+  router.post("/deleteorder/:orderId", (req, res) => {
+    const oId = req.params.orderId;
+    Order.findById(oId).deleteOne()
+    .then(order => {
+      res.render("manager/vieworders", {
+        order : order
+      })
+    })
+  });
+
+  // router.get("/deletemenu/:menuId", (req, res) => {
+  //   // const mId = req.body.menuId;
+  //   // Menu.findByIdAndRemove(mId)
+  //   // .then(menu => {
+  //     res.redirect("manager/addfood", {
+  //       menu : menu
+  //     // })
+  //   })
+  // });
+
+  router.get("/deletemenu/:menuId", (req, res) => {
+    const mId = req.body.menuId;
+    Menu.findById(mId).deleteOne()
+    .then(menu => {
+      res.render("admin/adduser",{
+        menu: menu
+      })
+    })
+  })
 
 router.get("/menu", (req,res) => {
     res.render("manager/manmenu")

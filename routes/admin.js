@@ -4,16 +4,11 @@ const authRole = require("../config/auth");
 const User = require("../models/user");
 const Menu = require("../models/menu");
 const Order = require("../models/order");
+const Coupon = require("../models/coupon");
 const bcrypt = require("bcrypt");
 const passport = require("passport");
+const coupon = require("../models/coupon");
 
-router.get("/dashboard", (req, res) => {
-  res.render("admin/dashboard");
-});
-
-router.post("/dashboard", (req, res) => {
-  res.render("admin/dashboard");
-});
 
 router.get("/adduser", (req, res) => {
   res.render("admin/adduser");
@@ -95,6 +90,17 @@ router.get("/deleteuser/:userId", (req, res) => {
   })
 });
 
+router.post("/deleteuser/:userId", (req, res) => {
+  const uId = req.params.userId;
+  User.findById(uId).deleteOne()
+  .then(user => {
+    res.render("admin/allusers", {
+      user : user
+    })
+  })
+});
+
+
 
 router.get("/allusers", (req, res) => {
   User.find()
@@ -133,16 +139,61 @@ router.get("/allusers", (req, res) => {
 });
 
 router.get("/allorders", (req, res) => {
-  res.render("admin/allorders");
-});
-
-router.get("/coupons", (req, res) => {
   res.render("admin/coupons");
 });
 
-
-router.get("/checkout", (req, res) => {
-  res.render("admin/checkout");
+router.post("/coupons", (req,res) => {
+ 
+  const code = req.body.code;
+  const coupon = new Coupon({
+    code: code,
+    date: new Date(),
+  });
+    console.log("coupon")
+  return coupon.save()
+  .then(result => {
+      
+      res.redirect("/admin/coupons");
+      
+  })
+  .catch(err => {
+      console.log(err);
+  });
 });
+
+router.get("/coupons", (req, res) => {
+  Coupon.find()
+    .then(coupon => {
+        res.render("admin/coupons", {
+          coupon: coupon,
+        
+        })
+    })
+    .catch(err => console.log(err));
+        
+});
+
+router.get("/deletecoupon/:couponId", (req, res) => {
+  const cId = req.params.couponId;
+  console.log(cId)
+  Coupon.findById(cId).deleteOne()
+  .then(coupon => {
+    res.redirect("/coupons", {
+      coupon : coupon
+    })
+  })
+});
+
+router.post("/deletecoupon/:couponId", (req, res) => {
+  const cId = req.params.couponId;
+  console.log(cId)
+  Coupon.findById(cId).deleteOne()
+  .then(coupon => {
+    res.redirect("admin/coupons", {
+      coupon : coupon
+    })
+  })
+});
+
 
 module.exports = router;

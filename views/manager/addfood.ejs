@@ -2,36 +2,71 @@
 <%- include("../partials/mandash") %>
 <%- include("../partials/header") %>
 
-<h1 style="text-align: center; margin:20px">Add Food</h1>
-<div class="addfood">
+<h1 style="text-align: center; margin:20px">Add and View All Foods</h1>
+<div class="forFood">
+    <div class="addfood">
     
-    <form action="/manager/addfood" method="POST" class="addfoodForm">
-        <label for="foodName">Food name:</label> 
-        <input type="text" class="foodName" id="foodName" name= "foodName" required > <br/>
-
-        <label for="price">Price:</label> 
-        <input type="text" class="price" id="price" name= "price"  required > <br/>
-
-        <!-- <label for="day">Day:</label> 
-        <input type="text" class="day" id="day" name= "day"  required > <br/> -->
-        <label for="day">Day:</label>
-        <div class="">
-            <select name="day" id="day" >
-                <option value="">Choose the day</option>
-                <option value="Monday" >Monday</option>
-                <option value="Tuesday">Tuesday</option>
-                <option value="wednesday">Wednesday</option>
-                <option value="Thursday">Thursday</option>
-                <option value="Friday">Friday</option>
-            </select>
-        </div>
-
-        <label for="foodimg">Image Url:</label> 
-        <input type="text" id="foodimg" name="foodimg" accept="image/*"> <br>
-
-        <label for="description">Description:</label> 
-        <input type="text" class="description" id="description" name= "description" required placeholder="" hei> <br/>
-
-        <button class="addfoodbtn" type="submit"> Add food</button>
-    </form>
+        <form action="/manager/addfood" method="POST" class="addfoodForm">
+            <label for="foodName">Food name:</label> 
+            <input type="text" class="foodName" id="foodName" name= "foodName" required > <br/>
+    
+            <label for="price">Price:</label> 
+            <input type="text" class="price" id="price" name= "price"  required > <br/>
+    
+            <!-- <label for="day">Day:</label> 
+            <input type="text" class="day" id="day" name= "day"  required > <br/> -->
+            <label for="day">Day:</label>
+            <div class="">
+                <select name="day" id="day" >
+                    <option value="">Choose the day</option>
+                    <option value="Monday" >Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                </select>
+            </div>
+    
+            <label for="foodimg">Image Url:</label> 
+            <input type="text" id="foodimg" name="foodimg" accept="image/*"> <br>
+    
+            <label for="description">Description:</label> 
+            <input type="text" class="description" id="description" name= "description" required > <br/>
+    
+            <button class="addfoodbtn" type="submit"> Add food</button>
+        </form>
+    </div>
+    
+    <div>
+        <div class="addfood">
+            <% if (menu.length > 0) { %>
+                
+                <table>
+                    <tr>
+                        <th>Food Name</th>
+                        <th>Price</th>
+        
+                    </tr>
+                    <% for (var meal = 0; meal < menu.length; meal++) { %>
+        
+                        <tr>
+            
+                            <td><%= menu[meal].foodName %></td>
+                            <td><%= menu[meal].price %> </td>
+                            <td>
+                                <form action="/manager/deletemenu/<%= menu[meal]._id %> " method="GET">
+                                    <button id="<%= menu._id %>" type="submit" class="btn">Remove</button>
+                                </form>
+                            </td>
+                                
+                        </tr>
+                    <% } %> 
+                    
+                </table>
+          
+                <% } else {   %>
+                    <p>Nothing in menu</p>
+                    <% }    %>
+            </div>
+    </div>
 </div>

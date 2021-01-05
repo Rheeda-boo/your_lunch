@@ -2,38 +2,52 @@
 <%- include("../partials/mandash") %>
 <%- include("../partials/header") %>
 
-<div class="viewordersDiv">
-    <h2 class="orderSumHeader">Order Summary</h2>
-    <div class="orderSum">
+<div class="allusersDiv">
+   
+    <div class="allusers">
 
         
-        <div> <h3>Add orders</h3></div>
-        <div> <h3>Approved orders</h3></div>
-        <div> <h3>Cancelled orders</h3></div>
-
-        <div> <h3> 25 </h3></div>
-        <div> <h3> 25 </h3></div>
-        <div> <h3> 2 </h3></div>
-
+        
+        <div> <h3 style="font-weight: bolder;">Total </h3></div>
+        <div> <h3 > <%= order.length %> </h3></div>
     </div>
 
-    <br> <b><br></b>
+</div>
 
+<div class="tDiv">
+    <% if (order.length > 0) { %>
+    
+            <table>
+                <tr>
 
-    <h2 class="breakdownHeader">Order Breakdown</h2>
-    <div class="breakdown">
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Meal</th>
+                    <th>Quantity</th>
+                    <th></th>
+                </tr>
+                <% order.forEach(order => { %>
 
-        <div> <h3>Food</h3></div>
-        <div> <h3>Quantity</h3></div>
+                <tr>
+                    <td><%= order.user.name %></td>
+                    <td><%= order.date %> </td>
+                     
+                    <% order.menu.forEach(meal => { %> 
+                        <td><%= meal.menu.foodName %> </td>
+                        <td><%= meal.quantity %> </td>
+                      <% }) %>
+                    <!-- <td><button class="btn">Approve</button></td> -->
+                    <td>
+                        <form action="/manager/deleteorder/<%= order._id %> " method="GET">
+                            <button id="<%= order._id %>" type="submit" class="btn">Remove</button>
+                        </form>
+                              
+                    </td>
+                </tr>
+                <% }) %> 
+               
+            </table>
+        
+    <% } %> 
 
-        <div> <h3> Fried Rice</h3></div>
-        <div> <h3> 6 </h3></div>
-
-        <div> <h3> Plain Rice</h3></div>
-        <div> <h3> 12 </h3></div>
-
-        <div> <h3> Fufue</h3></div>
-        <div> <h3> 7 </h3></div>
-
-    </div>
 </div>
