@@ -19,6 +19,10 @@ body {
     padding: 10px;
     /* justify-content: space-around; */
     justify-content: center;
+    border: 2px solid black;
+    /* height: fit-content; */
+    width: 550px;
+    margin-left: 30%;
     
 }
 

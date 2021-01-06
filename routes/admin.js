@@ -84,9 +84,7 @@ router.get("/deleteuser/:userId", (req, res) => {
   const uId = req.params.userId;
   User.findById(uId).deleteOne()
   .then(user => {
-    res.render("admin/allusers", {
-      user : user
-    })
+    res.redirect("/admin/allusers")
   })
 });
 
@@ -94,9 +92,7 @@ router.post("/deleteuser/:userId", (req, res) => {
   const uId = req.params.userId;
   User.findById(uId).deleteOne()
   .then(user => {
-    res.render("admin/allusers", {
-      user : user
-    })
+    res.redirect("admin/allusers")
   })
 });
 
@@ -139,7 +135,17 @@ router.get("/allusers", (req, res) => {
 });
 
 router.get("/allorders", (req, res) => {
-  res.render("admin/coupons");
+  // res.render("admin/allorders");
+  Order.find()
+    .then((order) => {
+      // console.log(user);
+                
+      res.locals.order = order;
+      res.render("admin/allorders", {
+        order: order,
+        
+      });
+    })
 });
 
 router.post("/coupons", (req,res) => {
@@ -194,6 +200,5 @@ router.post("/deletecoupon/:couponId", (req, res) => {
     })
   })
 });
-
 
 module.exports = router;

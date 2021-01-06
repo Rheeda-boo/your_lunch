@@ -33,8 +33,7 @@
                     <th>Name</th>
                     <th>Role</th>
                     <th>Email</th>
-                    <th></th>
-                    <th></th>
+                    
                 </tr>
                 <% for (var people = 0; people < user.length; people++) { %>
 
@@ -43,7 +42,6 @@
                     <td><%= user[people].name %></td>
                     <td><%= user[people].role %> </td>
                     <td><%= user[people].email %></td>
-                    <td><button class="btn">Approve</button></td>
                     <td>
                         <form action="/admin/deleteuser/<%= user[people]._id %> " method="GET">
                             <button id="<%= user[people]._id %>" type="submit" class="btn">Remove</button>

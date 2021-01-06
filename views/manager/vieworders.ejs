@@ -24,7 +24,7 @@
                     <th>Date</th>
                     <th>Meal</th>
                     <th>Quantity</th>
-                    <th></th>
+                    
                 </tr>
                 <% order.forEach(order => { %>
 
@@ -35,8 +35,19 @@
                     <% order.menu.forEach(meal => { %> 
                         <td><%= meal.menu.foodName %> </td>
                         <td><%= meal.quantity %> </td>
-                      <% }) %>
-                    <!-- <td><button class="btn">Approve</button></td> -->
+                      
+                    <td>
+                        <% if (order.delivered === false) {%> 
+                        <form action="/manager/deliver/<%= order._id %>">
+                            <input type="hidden" value="<%= meal.menu._id %>" name="menuId">
+                            <button class="btn" type="#">Complete Order</button>
+                        </form>
+
+                        <% } else { %> 
+                            <p >Order Completed</p>
+                            <% } %>  
+                    </td>
+                    
                     <td>
                         <form action="/manager/deleteorder/<%= order._id %> " method="GET">
                             <button id="<%= order._id %>" type="submit" class="btn">Remove</button>
@@ -45,9 +56,9 @@
                     </td>
                 </tr>
                 <% }) %> 
-               
+                <% }) %>
             </table>
-        
+            
     <% } %> 
 
 </div>

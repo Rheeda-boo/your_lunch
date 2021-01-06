@@ -72,15 +72,13 @@ router.get("/vieworders", (req,res) => {
         
       });
     })
-} );
+});
 
 router.get("/deleteorder/:orderId", (req, res) => {
     const oId = req.params.orderId;
     Order.findById(oId).deleteOne()
     .then(order => {
-      res.render("manager/vieworders", {
-        order : order
-      })
+      res.redirect("/manager/vieworders")
     })
   });
 
@@ -95,21 +93,24 @@ router.get("/deleteorder/:orderId", (req, res) => {
     })
   });
 
-  // router.get("/deletemenu/:menuId", (req, res) => {
-  //   // const mId = req.body.menuId;
-  //   // Menu.findByIdAndRemove(mId)
-  //   // .then(menu => {
-  //     res.redirect("manager/addfood", {
-  //       menu : menu
-  //     // })
-  //   })
-  // });
+  router.get("/deliver/:orderId", (req,res) => {
+    const oId = req.params.orderId
+    console.log(oId);
+    Order.findByIdAndUpdate(oId, {delivered: true})
+    .then(orders => {
+      res.redirect("/manager/vieworders")
+    })
+    
+    // Order.findByIdAndUpdate(oId, {disabled: false})
+    .catch(err => console.log(err));
+  })
 
   router.get("/deletemenu/:menuId", (req, res) => {
-    const mId = req.body.menuId;
+    const mId = req.params.menuId;
+    console.log(mId)
     Menu.findById(mId).deleteOne()
     .then(menu => {
-      res.render("admin/adduser",{
+      res.render("manager/addfood",{
         menu: menu
       })
     })

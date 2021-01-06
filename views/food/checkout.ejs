@@ -10,7 +10,9 @@
     <div class="address" style="font-size: larger;">
         <form action="" class="billingForm">
             <h3 style="font-weight: bolder;">Delivery Infomation</h3>
-<!--  -->
+
+            <label for="">Name: </label> <%= user.name %> <br>
+            <label for="">Email: </label> <%= user.email %> 
 
         </form>
     </div>
@@ -20,7 +22,7 @@
         <h3 style="font-weight: bolder;">Payment Options</h3>
 
           <form action="/food/createorder" method="POST" class="payForm">
-
+          
               <input type="radio" id="male" name="pay" value="cash">
               <label for="mtn">Cash on Delivery</label><br>
               <input type="radio" id="tigo" name="pay" value="momo">
@@ -32,7 +34,7 @@
                 <button type="submit" class="btn">Check Validity</button>
             </form>
               <br><br>
-              <form action="" method="#">
+              <form action="/food/createorder" method="POST">
                 <button type="submit" value="" class="orderbtn"> Complete Order</button>
               </form>
             

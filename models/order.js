@@ -39,9 +39,16 @@ const orderSchema = new  mongoose.Schema({
     date: {
         type: Date,
         required : true, 
-    }
+    },
+
+    delivered: {
+      type: Boolean,
+      required: true
+    },
     
 });
+
+
 
 const orderModel  = mongoose.model("Order", orderSchema);
 

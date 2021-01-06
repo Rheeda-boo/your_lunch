@@ -57,7 +57,16 @@ router.post("/cart", (req,res) => {
 
 
 router.get("/checkout", (req,res) => {
-    res.render("food/checkout")
+  User.find()
+    .then(user => {
+  res.locals.user = user;
+  res.render("food/checkout", {
+    user: user,
+    name: name,
+    email: email
+    
+  });
+})
 });
 
 router.post("/checkout", (req,res) => {
@@ -86,7 +95,7 @@ router.post("/createorder", (req,res) => {
         },
         menu: menu,
         date: new Date(),
-        // pay: pay,
+        delivered: false,
       });
       return order.save();
     })
@@ -94,16 +103,13 @@ router.post("/createorder", (req,res) => {
       return req.user.clearCart();
     })
     .then(() => {
-      res.redirect("/", {
-       
-
-      });
+      res.redirect("/")
     })
     .catch(err => console.log(err)); 
 });
 
 router.get("/create-order", (req,res) => {
-    Order.find({  })
+    Order.find({})
     .then(orders => {
       res.render('/', {
         orders: orders
@@ -125,9 +131,16 @@ router.post("/deletecart", (req,res) => {
 
 
 router.get("/checkcoupon", (req,res) => {
-  Coupon.find({  })
+  const code = req.body.code;
+  Coupon.findOne({code : code})
     .then(coupon => {
-      res.render('/', {
+      if(!coupon) {
+        console.log("no no no")
+      } else {
+        console.log("yaaay")
+      }
+
+      res.render('/food/checkout', {
         coupon: coupon
       })
     })
@@ -136,9 +149,16 @@ router.get("/checkcoupon", (req,res) => {
 });
 
 router.post("/checkcoupon", (req,res) => {
-  Coupon.find({  })
+  const code = req.body.code;
+  Coupon.findOne({code : code})
     .then(coupon => {
-      res.render('/', {
+      if(!coupon) {
+        console.log("no no no")
+      } else {
+        console.log("yaaay")
+      }
+
+      res.render('/food/checkout', {
         coupon: coupon
       })
     })
