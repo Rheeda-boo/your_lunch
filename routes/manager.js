@@ -116,6 +116,15 @@ router.get("/deleteorder/:orderId", (req, res) => {
     })
   })
 
+  router.post("/deletemenu/:menuId", (req, res) => {
+    const mId = req.params.menuId;
+    console.log(mId)
+    Menu.findById(mId).deleteOne()
+    .then(menu => {
+      res.redirect("/manager/addfood")
+    })
+  })
+
 router.get("/menu", (req,res) => {
     res.render("manager/manmenu")
 } );
